@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = { title: "Privacy Policy" };
+
+export default function PrivacyPolicyPage() {
+  return <main className="policy-page"><div className="breadcrumb"><Link href="/">HOME</Link><span>/</span><span>PRIVACY POLICY</span></div><article className="policy-content"><span className="eyebrow">WORLD ORGANIC BAZAR</span><h1>Privacy <em>policy.</em></h1><p className="policy-draft">This policy page needs the business owner’s approved privacy terms before launch.</p><h2>Information used for orders</h2><p>When you place an order, the Bazar uses the contact and delivery details you provide to process the order, arrange delivery, and help with order support. Order records are retained so customers and authorized staff can review their order history.</p><h2>Account information</h2><p>Account details are used to provide sign-in, saved addresses, order history, and wishlist features. Passwords are stored as one-way hashes and are never displayed to staff.</p><h2>Newsletter</h2><p>Email addresses submitted to the newsletter form are stored as subscriber records. A production unsubscribe and retention policy must be configured before newsletter messages are sent.</p><h2>Payments and third parties</h2><p>Cash on Delivery is the only active payment method in this build. Online providers and external media services must be separately configured; their privacy terms will be added when selected.</p><h2>Questions</h2><p>Use the <Link href="/contact">contact page</Link> once business contact details are published. This draft should be reviewed and approved by the business before launch.</p></article></main>;
+}

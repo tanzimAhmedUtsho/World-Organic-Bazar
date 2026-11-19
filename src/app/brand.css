@@ -1,0 +1,6 @@
+.brand-logo{display:block;width:clamp(135px,14vw,184px);height:auto;object-fit:contain}
+.footer-logo{width:min(100%,235px)}
+.admin-brand{background:#f6f2e6;border:0;border-radius:7px;padding:8px;margin:0 7px 18px}
+.admin-brand-logo{display:block;width:190px;height:auto;max-height:76px;object-fit:contain;object-position:center}
+.admin-login-logo{display:block;width:min(100%,310px);height:auto;margin:0 0 28px}
+@media(max-width:700px){.brand-logo{width:clamp(118px,39vw,154px)}.footer-logo{width:min(100%,220px)}.admin-brand-logo{width:170px}.admin-login-logo{width:min(100%,270px)}}

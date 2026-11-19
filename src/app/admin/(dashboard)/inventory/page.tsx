@@ -1,0 +1,17 @@
+import { Search } from "lucide-react";
+import { requireAdmin } from "@/lib/authz";
+import { prisma } from "@/lib/prisma";
+import { InventoryAdjustForm } from "@/components/admin/inventory-adjust-form";
+
+export const dynamic = "force-dynamic";
+
+export default async function AdminInventoryPage({ searchParams }: { searchParams: Promise<{ q?: string; stock?: string }> }) {
+  await requireAdmin("inventory.read");
+  const query = await searchParams;
+  const search = query.q?.trim().slice(0, 100);
+  const lowOnly = query.stock === "low";
+  const variants = await prisma.productVariant.findMany({ where: { active: true, product: { status: { not: "ARCHIVED" }, ...(search ? { OR: [{ nameEn: { contains: search, mode: "insensitive" } }, { nameBn: { contains: search, mode: "insensitive" } }, { variants: { some: { sku: { contains: search, mode: "insensitive" } } } }] } : {}) } }, include: { product: { select: { nameEn: true, nameBn: true, status: true } } }, orderBy: [{ stockQuantity: "asc" }, { product: { nameEn: "asc" } }], take: 200 });
+  const items = lowOnly ? variants.filter((variant) => variant.stockQuantity <= variant.lowStockThreshold) : variants;
+  const canManage = (await requireAdmin()).adminRoles.some(({ role }) => role.name === "SUPER_ADMIN" || role.permissions.some(({ permission }) => permission.key === "inventory.manage"));
+  return <div className="admin-page"><div className="admin-page-heading"><div><span className="admin-eyebrow">COMMERCE / STOCK CONTROL</span><h1>Inventory</h1><p>Track stock per variation and record every manual adjustment.</p></div></div><section className="admin-panel admin-list-panel"><form className="admin-list-toolbar"><label className="admin-search"><Search size={15}/><input name="q" defaultValue={query.q} placeholder="Search product, category, or SKU" /></label><select name="stock" defaultValue={query.stock || ""} aria-label="Filter stock"><option value="">All stock</option><option value="low">Low stock only</option></select><button className="admin-secondary-button">Filter</button><span className="admin-result-count">{items.length} variations</span></form><div className="admin-table-scroll"><table className="admin-table"><thead><tr><th>PRODUCT</th><th>VARIATION / SKU</th><th>ON HAND</th><th>REORDER AT</th><th>STOCK LEVEL</th>{canManage && <th>ADJUST STOCK</th>}</tr></thead><tbody>{items.map((variant) => <tr key={variant.id}><td><div className="admin-product-name"><strong>{variant.product.nameEn}</strong><small lang="bn">{variant.product.nameBn}</small></div></td><td><div className="admin-product-name"><strong>{variant.label}</strong><small>{variant.sku}</small></div></td><td><span className={`stock-indicator ${variant.stockQuantity <= variant.lowStockThreshold ? "low" : ""}`}>{variant.stockQuantity}</span></td><td>{variant.lowStockThreshold}</td><td><span className={`admin-status ${variant.stockQuantity === 0 ? "admin-status-cancelled" : variant.stockQuantity <= variant.lowStockThreshold ? "admin-status-pending" : "admin-status-active"}`}>{variant.stockQuantity === 0 ? "out of stock" : variant.stockQuantity <= variant.lowStockThreshold ? "reorder" : "healthy"}</span></td>{canManage && <td><InventoryAdjustForm variantId={variant.id} stock={variant.stockQuantity}/></td>}</tr>)}{items.length === 0 && <tr><td colSpan={canManage ? 6 : 5}><div className="admin-empty">No inventory records match this filter.</div></td></tr>}</tbody></table></div></section></div>;
+}
