@@ -11,10 +11,7 @@ export const metadata: Metadata = { title: "আমাদের গল্প", de
 export default async function OurStoryPage() {
   const section = await prisma.homepageSection.findUnique({ where: { key: "our-story" } });
   const content = section?.content as { founders?: string[]; copy?: string; image?: string } | undefined;
-  const defaultFounders = ["তানজিম আহমেদ উত্‌শো", "জাবির আহমেদ তুর্জো"];
-  const founders = (content?.founders ?? defaultFounders)
-    .slice(0, 2)
-    .map((founder, index) => displayText(founder, defaultFounders[index] ?? "সহ-প্রতিষ্ঠাতা"));
+  const founders = ["Tanzim Ahmed Utsho", "Zabir Ahmed Turzo"];
   const storyCopy = displayText(
     content?.copy,
     "বাংলাদেশের খাঁটি খাবার, ঐতিহ্যবাহী স্বাদ আর মানুষের গল্প নিয়ে আমাদের এই বাজার।",

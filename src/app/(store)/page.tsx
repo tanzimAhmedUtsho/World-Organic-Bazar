@@ -27,9 +27,7 @@ export default async function HomePage() {
   const whyCards = (whyContent?.cards ?? defaultWhyCards).slice(0, 4).map((item, index) => displayText(item, defaultWhyCards[index]));
   const seasonalContent = section("seasonal")?.content as { title?: string; visible?: boolean; body?: string; image?: string; productSlugs?: string[] } | undefined;
   const storyContent = section("our-story")?.content as { founders?: string[]; copy?: string } | undefined;
-  const defaultFounders = ["তানজিম আহমেদ উত্‌শো", "জাবির আহমেদ তুর্জো"];
-  const founders = (storyContent?.founders ?? defaultFounders).slice(0, 2)
-    .map((founder, index) => displayText(founder, defaultFounders[index] ?? "সহ-প্রতিষ্ঠাতা"));
+  const founders = ["Tanzim Ahmed Utsho", "Zabir Ahmed Turzo"];
   const activeSeasonal = seasonalContent?.visible === true;
 
   return <main>
