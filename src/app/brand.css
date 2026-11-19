@@ -113,3 +113,36 @@
 .category-directory-empty p{font:12px var(--bengali),sans-serif;color:#7a7f72;margin:0 0 20px}
 @media(max-width:900px){.category-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 15px}}
 @media(max-width:760px){.category-directory-page{padding:0 20px 70px}.category-directory-page .breadcrumb{height:45px}.category-directory-intro{grid-template-columns:1fr;gap:17px;padding:43px 0 32px}.category-directory-intro>.eyebrow{grid-column:auto}.category-directory-intro h1{font-size:clamp(43px,12vw,58px)}.category-directory-intro>p{font-size:12px}.category-directory-grid{gap:26px 12px;padding:28px 0}.category-directory-copy{padding-top:10px}.category-directory-copy h2{font-size:16px}.category-directory-copy>div{align-items:flex-start;flex-direction:column;gap:3px}.category-directory-copy p{font-size:10px}}
+
+.regional-specialties{padding:54px 0 66px}
+.regional-specialties-heading{display:grid;grid-template-columns:1fr minmax(240px,.55fr);align-items:end;gap:24px 48px;margin-bottom:28px}
+.regional-specialties-heading h2{font:600 clamp(34px,4.4vw,54px)/1.08 var(--bengali),sans-serif;color:var(--forest);margin:11px 0 0}
+.regional-specialties-heading h2 em{font-style:normal;color:#7b8c56}
+.regional-specialties-heading>p{max-width:370px;font:12px/1.8 var(--bengali),sans-serif;color:#74796e;margin:0 0 4px}
+.regional-specialties-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.regional-specialty-card{position:relative;min-height:164px;padding:19px;background:#f1efe7;border:1px solid #e5e3d9}
+.regional-specialty-index{position:absolute;right:16px;top:16px;color:#a0a28f;font:500 10px var(--sans);letter-spacing:.12em}
+.regional-specialty-card h3{font:600 19px var(--bengali),sans-serif;color:var(--forest);margin:0 0 3px}
+.regional-specialty-card>div>span{font:500 9px var(--sans);letter-spacing:.08em;color:#929587}
+.regional-specialty-card p{font:12px/1.75 var(--bengali),sans-serif;color:#5e6c53;margin:23px 0 0;padding-right:10px}
+.store-category-list{padding:42px 0 10px;border-top:1px solid var(--line)}
+.store-category-heading{margin-bottom:20px}
+.store-category-heading h2{font:600 clamp(26px,3.5vw,39px)/1.15 var(--bengali),sans-serif;color:var(--forest);margin:8px 0}
+.store-category-heading>p{font:11px var(--bengali),sans-serif;color:#7a7f73;margin:0}
+.store-category-list .category-directory-grid{padding-top:8px}
+.contact-page{min-height:70vh;padding:0 clamp(24px,8vw,118px) 100px}
+.contact-page .breadcrumb{height:53px}
+.contact-page .shop-intro{min-height:275px;padding:60px 0 48px}
+.contact-page .shop-intro h1{font-size:clamp(50px,6.2vw,76px);line-height:1.02}
+.contact-page .shop-intro>p{max-width:360px;font-size:13px}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.contact-card{min-width:0;min-height:180px;display:flex;flex-direction:column;align-items:flex-start;padding:24px;background:#f1efe7;border:1px solid #e4e2d8;color:var(--forest)}
+.contact-card>svg{width:21px;height:21px;color:#708251;stroke-width:1.6;margin-bottom:17px}
+.contact-card>.eyebrow{margin-bottom:6px}
+.contact-card>strong{font:600 18px/1.4 var(--bengali),var(--sans);overflow-wrap:anywhere;color:var(--forest)}
+.contact-card>small{font:10px var(--bengali),sans-serif;color:#828679;margin-top:8px}
+a.contact-card{transition:background .2s,border-color .2s,transform .2s}
+a.contact-card:hover{background:#e9e8dd;border-color:#cbd0c4;transform:translateY(-2px)}
+@media(max-width:900px){.regional-specialties-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.contact-page{padding:0 20px 70px}.contact-page .breadcrumb{height:45px}.contact-page .shop-intro{min-height:0;padding:43px 0 32px}.contact-page .shop-intro h1{font-size:clamp(44px,12vw,58px)}.contact-page .shop-intro>p{font-size:12px}.contact-grid{grid-template-columns:1fr;gap:10px;margin-top:20px}.contact-card{min-height:150px;padding:19px}.regional-specialties{padding:36px 0 44px}.regional-specialties-heading{grid-template-columns:1fr;gap:15px;margin-bottom:20px}.regional-specialties-heading h2{font-size:36px}.regional-specialties-heading>p{font-size:11px}.regional-specialties-grid{gap:9px}.regional-specialty-card{min-height:150px;padding:14px}.regional-specialty-card h3{font-size:16px}.regional-specialty-card p{font-size:10px;margin-top:18px}.store-category-list{padding-top:30px}.store-category-heading h2{font-size:27px}}
+@media(max-width:420px){.regional-specialties-grid{grid-template-columns:1fr}.regional-specialty-card{min-height:0}.regional-specialty-card p{margin-top:12px}}

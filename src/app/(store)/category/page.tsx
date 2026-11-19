@@ -7,9 +7,20 @@ import { displayText } from "@/lib/display-text";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "পণ্যের বিভাগ",
-  description: "World Organic Bazar-এর পণ্যের বিভাগগুলো ঘুরে দেখুন।",
+  title: "বাংলাদেশের বিভাগ ও আঞ্চলিক স্বাদ",
+  description: "বাংলাদেশের আটটি বিভাগের পরিচিত খাবার ও আঞ্চলিক পণ্য সম্পর্কে জানুন।",
 };
+
+const regionalSpecialties = [
+  { name: "ঢাকা", english: "Dhaka", specialties: "কাচ্চি বিরিয়ানি · বাকরখানি" },
+  { name: "চট্টগ্রাম", english: "Chattogram", specialties: "মেজবানি গরুর মাংস · শুঁটকি" },
+  { name: "খুলনা", english: "Khulna", specialties: "চুইঝাল · সুন্দরবনের মধু · চিংড়ি" },
+  { name: "রাজশাহী", english: "Rajshahi", specialties: "আম · লিচু · কাঁচা আমের মুরগি" },
+  { name: "বরিশাল", english: "Barishal", specialties: "ইলিশ পাতুরি · পেয়ারা" },
+  { name: "সিলেট", english: "Sylhet", specialties: "চা · সাতকরা" },
+  { name: "রংপুর", english: "Rangpur", specialties: "হাড়িভাঙ্গা আম · ভুনা খিচুড়ি" },
+  { name: "ময়মনসিংহ", english: "Mymensingh", specialties: "মুক্তাগাছার মণ্ডা · দই-ঝাল বোয়াল" },
+];
 
 export default async function CategoriesPage() {
   const categories = await getStoreCategories();
@@ -18,12 +29,26 @@ export default async function CategoriesPage() {
     <main className="category-directory-page">
       <div className="breadcrumb"><Link href="/">হোম</Link><span>/</span><span>বিভাগ</span></div>
       <section className="category-directory-intro">
-        <span className="eyebrow">WORLD ORGANIC BAZAR · বিভাগ</span>
-        <h1>আপনার পছন্দের<br /><em>স্বাদ খুঁজুন।</em></h1>
-        <p>চেনা খাবার ও রান্নার উপকরণগুলো বিভাগ অনুযায়ী দেখুন। প্রতিটি পণ্যের বিবরণ, ওজন ও দাম দেখে বেছে নিন।</p>
+        <span className="eyebrow">বাংলাদেশ · আট বিভাগ</span>
+        <h1>প্রতিটি অঞ্চলের<br /><em>নিজস্ব স্বাদ।</em></h1>
+        <p>বাংলাদেশের কোন বিভাগ কোন খাবার ও পণ্যের জন্য পরিচিত, এক নজরে জেনে নিন।</p>
+      </section>
+      <section className="regional-specialties" aria-labelledby="regional-specialties-title">
+        <div className="regional-specialties-heading"><div><span className="eyebrow">আঞ্চলিক খাবার ও পণ্য</span><h2 id="regional-specialties-title">বাংলাদেশের স্বাদ,<br /><em>বিভাগে বিভাগে।</em></h2></div><p>নিচের তালিকায় প্রতিটি অঞ্চলের পরিচিত কিছু খাবার ও পণ্যের উদাহরণ দেওয়া হয়েছে।</p></div>
+        <div className="regional-specialties-grid">
+          {regionalSpecialties.map((division, index) => (
+            <article className="regional-specialty-card" key={division.english}>
+              <span className="regional-specialty-index">০{index + 1}</span>
+              <div><h3>{division.name}</h3><span>{division.english}</span></div>
+              <p>{division.specialties}</p>
+            </article>
+          ))}
+        </div>
       </section>
       {categories.length ? (
-        <div className="category-directory-grid">
+        <section className="store-category-list" id="store-categories">
+          <div className="store-category-heading"><span className="eyebrow">WORLD ORGANIC BAZAR</span><h2>আমাদের পণ্যের বিভাগ</h2><p>বাজারে থাকা পণ্যগুলো দেখতে একটি বিভাগ বেছে নিন।</p></div>
+          <div className="category-directory-grid">
           {categories.map((category, index) => (
             <Link className="category-directory-card" href={`/category/${category.slug}`} key={category.id}>
               <div className="category-directory-image">
@@ -36,7 +61,8 @@ export default async function CategoriesPage() {
               </div>
             </Link>
           ))}
-        </div>
+          </div>
+        </section>
       ) : (
         <div className="category-directory-empty"><h2>বিভাগগুলো সাজানো হচ্ছে।</h2><p>এখনই সব পণ্য দেখতে পারেন।</p><Link className="button button-green" href="/shop">সব পণ্য দেখুন</Link></div>
       )}
