@@ -1,5 +1,6 @@
 import { Prisma, type ProductStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { displayText } from "@/lib/display-text";
 
 export const catalogInclude = {
   images: { orderBy: { position: Prisma.SortOrder.asc } },
@@ -44,11 +45,16 @@ export type StoreProduct = {
 
 export type StoreCategory = { id: string; name: string; banglaName: string; slug: string; description: string; image: string; count: number };
 
+export function formatVariantLabel(label: string, weightGrams: number | null): string {
+  const fallback = weightGrams ? `${weightGrams.toLocaleString("bn-BD")} গ্রাম` : "প্যাক";
+  return displayText(label, fallback);
+}
+
 export function mapStoreProduct(product: ProductRecord): StoreProduct {
   const variants = product.variants.map((variant) => ({
     id: variant.id,
     sku: variant.sku,
-    label: variant.label,
+    label: formatVariantLabel(variant.label, variant.weightGrams),
     weightGrams: variant.weightGrams,
     price: Number(variant.price),
     compareAtPrice: variant.compareAtPrice === null ? null : Number(variant.compareAtPrice),
@@ -60,11 +66,11 @@ export function mapStoreProduct(product: ProductRecord): StoreProduct {
   return {
     id: product.id,
     slug: product.slug,
-    name: product.nameBn,
+    name: displayText(product.nameBn, product.nameEn),
     banglaName: product.nameEn,
     description: product.description,
     shortDescription: product.shortDescription ?? "",
-    category: category?.nameBn ?? "বাজার",
+    category: displayText(category?.nameBn, category?.nameEn ?? "বাজার"),
     categorySlug: category?.slug ?? "",
     image: product.images.find((image) => image.featured)?.url ?? product.images[0]?.url ?? "/images/product-placeholder.svg",
     rating: ratings.length ? ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length : null,
@@ -130,8 +136,8 @@ export async function getStoreCategories(): Promise<StoreCategory[]> {
   const categories = await prisma.category.findMany({ where: { active: true, parentId: null }, orderBy: { displayOrder: "asc" } });
   return Promise.all(categories.map(async (category) => ({
     id: category.id,
-    name: category.nameBn,
-    banglaName: category.nameBn,
+    name: displayText(category.nameBn, category.nameEn),
+    banglaName: displayText(category.nameBn, category.nameEn),
     slug: category.slug,
     description: category.description ?? "",
     image: category.imageUrl ?? "/images/category-placeholder.svg",

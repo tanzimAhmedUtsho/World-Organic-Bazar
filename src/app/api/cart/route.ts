@@ -1,14 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { catalogInclude, mapStoreProduct } from "@/lib/products";
+import { catalogInclude, formatVariantLabel, mapStoreProduct } from "@/lib/products";
 import { cartItemsInclude, getCurrentCart } from "@/lib/cart";
 import { cartLineSchema } from "@/lib/validations/commerce";
 
-function serializeLines(items: Array<{ id: string; quantity: number; variant: { id: string; label: string; sku: string; price: unknown; stockQuantity: number; product: Parameters<typeof mapStoreProduct>[0] } }>) {
+function serializeLines(items: Array<{ id: string; quantity: number; variant: { id: string; label: string; weightGrams: number | null; sku: string; price: unknown; stockQuantity: number; product: Parameters<typeof mapStoreProduct>[0] } }>) {
   return items.map(({ id, quantity, variant }) => ({
     id,
     quantity,
-    variant: { id: variant.id, label: variant.label, sku: variant.sku, price: Number(variant.price), stockQuantity: variant.stockQuantity },
+    variant: { id: variant.id, label: formatVariantLabel(variant.label, variant.weightGrams), sku: variant.sku, price: Number(variant.price), stockQuantity: variant.stockQuantity },
     product: mapStoreProduct(variant.product),
   }));
 }

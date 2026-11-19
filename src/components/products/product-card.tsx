@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, Heart, Plus, Star } from "lucide-react";
@@ -32,7 +32,7 @@ export function ProductCard({ product, index = 0 }: { product: StoreProduct; ind
   }
   return <article className="product-card" style={{ animationDelay: `${index * 70}ms` }}>
     <Link href={`/product/${product.slug}`} className="product-image-wrap">
-      <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 50vw, (max-width: 1000px) 33vw, 25vw" className="product-image" />
+      <SafeImage src={product.image} alt={product.name} fill sizes="(max-width: 640px) 50vw, (max-width: 1000px) 33vw, 25vw" className="product-image" />
       <span className="image-index">{String(index + 1).padStart(2, "0")}</span>
       {selected?.compareAtPrice && selected.compareAtPrice > selected.price && <span className="product-badge">বিশেষ দাম</span>}
       <span className="product-image-arrow"><ArrowUpRight size={16} /></span>

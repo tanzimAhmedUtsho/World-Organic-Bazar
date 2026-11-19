@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "World অর্গানিক বাজার",
     title: "World অর্গানিক বাজার — বাংলার খাঁটি খাবার",
     description: "বাংলাদেশের ঐতিহ্যবাহী খাবার ও স্বাদের ঠিকানা।",
-    images: ["/images/world-organic-bazar-logo.svg"],
+    images: ["/icon.svg"],
   },
   icons: { icon: "/icon.svg", shortcut: "/icon.svg", apple: "/icon.svg" },
 };
