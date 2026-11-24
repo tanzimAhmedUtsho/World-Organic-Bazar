@@ -8,12 +8,12 @@ type SafeImageProps = Omit<ImageProps, "src" | "onError"> & {
   fallbackSrc?: string;
 };
 
-/** Displays admin supplied images without the Next image proxy and falls back if the URL is stale. */
+/** Keeps admin supplied remote images direct, while letting Next optimize local assets. */
 export function SafeImage({ src, fallbackSrc = "/images/product-placeholder.svg", ...props }: SafeImageProps) {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => setFailed(false), [src]);
 
   const imageSrc = failed ? fallbackSrc : src;
-  return <Image {...props} src={imageSrc} unoptimized onError={() => setFailed(true)} />;
+  return <Image {...props} src={imageSrc} unoptimized={/^https?:\/\//i.test(imageSrc)} onError={() => setFailed(true)} />;
 }

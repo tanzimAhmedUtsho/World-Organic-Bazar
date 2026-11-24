@@ -12,6 +12,7 @@ export function BrandLogo({ variant = "store" }: BrandLogoProps) {
           src="/images/world-organic-bazar-logo.png"
           alt="World অর্গানিক বাজার — প্রকৃতির উপহার, আপনার পরিবারের জন্য"
           fill
+          priority={variant === "store"}
           unoptimized
           sizes="(max-width: 700px) 165px, 240px"
           className="brand-image"

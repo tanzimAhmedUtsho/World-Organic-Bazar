@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SafeImage } from "@/components/safe-image";
+import { RegionalSpecialties } from "@/components/products/regional-specialties";
 import { getStoreCategories } from "@/lib/products";
 import { displayText } from "@/lib/display-text";
 
@@ -10,17 +11,6 @@ export const metadata: Metadata = {
   title: "বাংলাদেশের বিভাগ ও আঞ্চলিক স্বাদ",
   description: "বাংলাদেশের আটটি বিভাগের পরিচিত খাবার ও আঞ্চলিক পণ্য সম্পর্কে জানুন।",
 };
-
-const regionalSpecialties = [
-  { name: "ঢাকা", english: "Dhaka", specialties: "কাচ্চি বিরিয়ানি · বাকরখানি" },
-  { name: "চট্টগ্রাম", english: "Chattogram", specialties: "মেজবানি গরুর মাংস · শুঁটকি" },
-  { name: "খুলনা", english: "Khulna", specialties: "চুইঝাল · সুন্দরবনের মধু · চিংড়ি" },
-  { name: "রাজশাহী", english: "Rajshahi", specialties: "আম · লিচু · কাঁচা আমের মুরগি" },
-  { name: "বরিশাল", english: "Barishal", specialties: "ইলিশ পাতুরি · পেয়ারা" },
-  { name: "সিলেট", english: "Sylhet", specialties: "চা · সাতকরা" },
-  { name: "রংপুর", english: "Rangpur", specialties: "হাড়িভাঙ্গা আম · ভুনা খিচুড়ি" },
-  { name: "ময়মনসিংহ", english: "Mymensingh", specialties: "মুক্তাগাছার মণ্ডা · দই-ঝাল বোয়াল" },
-];
 
 export default async function CategoriesPage() {
   const categories = await getStoreCategories();
@@ -35,15 +25,7 @@ export default async function CategoriesPage() {
       </section>
       <section className="regional-specialties" aria-labelledby="regional-specialties-title">
         <div className="regional-specialties-heading"><div><span className="eyebrow">আঞ্চলিক খাবার ও পণ্য</span><h2 id="regional-specialties-title">বাংলাদেশের স্বাদ,<br /><em>বিভাগে বিভাগে।</em></h2></div><p>নিচের তালিকায় প্রতিটি অঞ্চলের পরিচিত কিছু খাবার ও পণ্যের উদাহরণ দেওয়া হয়েছে।</p></div>
-        <div className="regional-specialties-grid">
-          {regionalSpecialties.map((division, index) => (
-            <article className="regional-specialty-card" key={division.english}>
-              <span className="regional-specialty-index">০{index + 1}</span>
-              <div><h3>{division.name}</h3><span>{division.english}</span></div>
-              <p>{division.specialties}</p>
-            </article>
-          ))}
-        </div>
+        <RegionalSpecialties />
       </section>
       {categories.length ? (
         <section className="store-category-list" id="store-categories">

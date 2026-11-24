@@ -41,3 +41,60 @@
 :root{--bengali:'Hind Siliguri','Noto Sans Bengali','Nirmala UI',sans-serif}body{font-family:var(--bengali),var(--sans)}.site-header .brand-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:#e4d7a1;font:700 20px/1 var(--sans);letter-spacing:0}.brand-name{gap:1px}.brand-name .brand-kicker{font:600 8px/1 var(--sans);letter-spacing:.25em;color:#896b4a}.brand-name strong{font:600 16px/1.15 var(--bengali);letter-spacing:0;color:var(--forest)}.main-nav a,.header-shop-link,.basket-button,.announcement,.announcement-note,.search-submit{font-family:var(--bengali),var(--sans)}.main-nav{gap:clamp(15px,2.4vw,35px)}.bazar-hero-bn{display:block;position:relative;isolation:isolate;min-height:clamp(470px,55vw,620px);background:#173f2b}.bazar-hero-bn .hero-visual{position:absolute;inset:0;z-index:-1;min-height:100%;height:100%}.bazar-hero-bn .hero-image{object-position:center 55%;filter:saturate(.82)}.bazar-hero-bn .hero-visual:after{background:linear-gradient(90deg,rgba(12,47,32,.96) 0%,rgba(12,47,32,.78) 42%,rgba(12,47,32,.2) 100%),linear-gradient(0deg,rgba(12,47,32,.48),transparent 42%)}.bazar-hero-bn .hero-copy{width:min(82%,1050px);padding:clamp(78px,10vw,128px) 20px 78px clamp(28px,8vw,118px)}.bazar-hero-bn .hero-copy .eyebrow{font-family:var(--bengali);font-size:12px;letter-spacing:.12em;color:#dfcc91}.bazar-hero-bn .hero-copy h1{font-family:var(--bengali);font-size:clamp(52px,8.5vw,106px);line-height:.98;letter-spacing:-.045em;font-weight:700;margin:20px 0 20px;max-width:950px}.bazar-hero-bn .hero-copy>p{font-family:var(--bengali);font-size:clamp(15px,1.45vw,18px);line-height:1.9;max-width:650px;color:#e3e8dc}.bazar-hero-bn .hero-actions{margin-top:29px}.bazar-hero-bn .button,.bazar-hero-bn .hero-discover{font-family:var(--bengali);font-size:13px}.bazar-hero-bn .hero-caption{font-family:var(--bengali);font-size:10px;letter-spacing:.12em}.bazar-hero-bn .hero-image-note{font-family:var(--bengali);font-size:10px;letter-spacing:.08em}.promise-item strong,.promise-item p,.promise-lead p,.section-heading h2,.text-link,.category-card>strong,.product-name,.product-bangla,.product-buy-row,.product-actions-row,.video-card h3,.video-card p,.story-copy,.newsletter,.newsletter p{font-family:var(--bengali),var(--sans)}.section-heading h2{font-weight:600;line-height:1.18;letter-spacing:-.02em}.category-card>strong{font-size:17px}.product-name{font-weight:600}.video-empty{display:flex;align-items:center;gap:16px;padding:27px;background:#faf9f4;border:1px solid #deded4;color:var(--forest)}.video-empty-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#e9ebdc;color:#536b3b}.video-empty strong{font:600 17px var(--bengali)}.video-empty p{font:13px/1.7 var(--bengali);color:#77786d;margin:5px 0 0}
 @media(max-width:900px){.bazar-hero-bn .hero-copy{width:94%;padding-left:40px}.bazar-hero-bn .hero-copy h1{max-width:700px}.site-header{gap:15px}.main-nav{gap:14px;margin-left:0}.header-actions{gap:13px}}
 @media(max-width:700px){.site-header{height:70px;padding-inline:16px}.brand-mark{flex:none}.brand-name strong{font-size:14px}.main-nav{font-family:var(--bengali);gap:0}.main-nav a{font-family:var(--bengali);font-size:14px}.header-actions{gap:5px}.header-shop-link{display:none}.basket-button{gap:5px;font-size:12px}.announcement{font-size:11px}.bazar-hero-bn{min-height:540px}.bazar-hero-bn .hero-copy{width:100%;padding:76px 22px 70px}.bazar-hero-bn .hero-copy h1{font-size:clamp(46px,12vw,68px);line-height:1.08}.bazar-hero-bn .hero-visual:after{background:linear-gradient(90deg,rgba(12,47,32,.9),rgba(12,47,32,.45)),linear-gradient(0deg,rgba(12,47,32,.55),transparent 55%)}.bazar-hero-bn .hero-caption{left:22px;right:22px}.bazar-hero-bn .hero-image-note{right:18px;bottom:62px;font-size:8px}.video-empty{align-items:flex-start;padding:20px}.video-empty strong{font-size:15px}}
+
+/* Readable Bengali type scale shared across storefront and admin pages. */
+body{font-size:16px;line-height:1.65}
+:lang(bn) :is(p,a,button,label,span,small,li,td,th,dt,dd,input,select,textarea){font-size:max(12px,1em)}
+.announcement{height:38px;min-height:38px;padding:4px 16px;font-size:13px;line-height:1.4;letter-spacing:0}
+.announcement-note{font-size:12px}
+.site-header{min-height:100px;height:auto}
+.main-nav{gap:clamp(18px,2.6vw,40px)}
+.main-nav a{font-size:15px;line-height:1.4}
+.header-actions{gap:clamp(12px,1.6vw,22px)}
+.basket-button{font-size:14px}
+.eyebrow{font-size:12px;letter-spacing:.04em}
+.breadcrumb{font-size:12px;letter-spacing:0}
+.category-tab{font-size:13px;padding:10px 14px}
+.product-bangla{font-size:13px}
+.product-meta,.product-badge,.product-buy-row,.text-link,.shop-intro>p,.detail-description,.story-copy>p,.newsletter-right p,.footer-links a{font-size:14px}
+.site-footer,.policy-content,.account-page,.contact-card{font-size:16px}
+.admin-shell{font-size:14px}
+.admin-sidebar a,.admin-sidebar button,.admin-page-heading p,.admin-table,.admin-field>span,.admin-form-help,.admin-switch-row small{font-size:13px}
+@media(max-width:900px){.site-header{min-height:82px}.main-nav{gap:12px}.main-nav a{font-size:14px}}
+@media(max-width:700px){.site-header{min-height:72px;height:auto;padding:10px 14px}.main-nav{gap:0}.main-nav a{font-size:15px;padding:12px 18px}.header-actions{gap:5px}.basket-button{font-size:13px}.announcement{font-size:12px;gap:12px}.announcement-note{font-size:11px}}
+
+.whatsapp-shortcut{position:fixed;z-index:20;right:22px;bottom:22px;display:flex;align-items:center;gap:9px;padding:13px 17px;border-radius:999px;background:#176b45;color:#fff;box-shadow:0 8px 24px #102d1f30;font-size:14px;font-weight:600;transition:transform .2s,background .2s}
+.whatsapp-shortcut:hover{background:#105b39;transform:translateY(-2px)}
+.whatsapp-shortcut svg{width:20px;height:20px}
+.product-assurances{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.product-assurances>div{display:flex;flex-direction:column;gap:4px}
+.product-assurances strong{font-size:13px;color:var(--forest)}
+.product-assurances span{font-size:12px;line-height:1.5;color:#73786d}
+.checkout-coupon{padding:15px 18px;background:#f2f0e8}
+.checkout-coupon>summary{cursor:pointer;color:var(--forest);font-weight:600}
+.checkout-coupon[open]>summary{margin-bottom:14px}
+.checkout-coupon .checkout-field{max-width:440px}
+.checkout-coupon .checkout-field>small{font-size:12px}
+@media(max-width:700px){.announcement{height:34px;min-height:34px;padding:3px 10px}.announcement-note{display:none}.whatsapp-shortcut{right:14px;bottom:14px;width:52px;height:52px;padding:0;justify-content:center}.whatsapp-shortcut span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.product-assurances{grid-template-columns:1fr;gap:12px}.checkout-coupon{padding:13px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.bazar-hero-bn .hero-copy h1{font-size:clamp(48px,7.2vw,92px);line-height:1.08;letter-spacing:-.025em}
+.bazar-hero-bn .hero-copy{padding-top:clamp(58px,8vw,108px)}
+@media(max-width:700px){.bazar-hero-bn .hero-copy h1{font-size:clamp(42px,10.8vw,62px);line-height:1.12}.announcement{font-size:12px;gap:10px}}
+.regional-specialty-button{width:100%;min-height:164px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;font:inherit;color:var(--forest);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.regional-specialty-button:hover,.regional-specialty-button.selected{background:#e9e8dd;border-color:#9ca88d;transform:translateY(-2px)}
+.regional-specialty-button:focus-visible{outline:3px solid #71835b;outline-offset:3px}
+.regional-specialty-name{display:flex;flex-direction:column;gap:4px}
+.regional-specialty-name strong{font:600 20px/1.3 var(--bengali),sans-serif}
+.regional-specialty-name small{font:500 10px/1.3 var(--sans);letter-spacing:.1em;color:#929587}
+.regional-specialty-action{display:flex;align-items:center;gap:6px;font:500 13px/1.4 var(--bengali),sans-serif;color:#60764d}
+.regional-specialty-button.selected .regional-specialty-action svg{transform:rotate(180deg)}
+.regional-food-panel{margin-top:20px;padding:clamp(20px,4vw,34px);background:#e9e8dd;border:1px solid #d7d8cd;animation:rise .25s ease-out}
+.regional-food-panel[hidden]{display:none}
+.regional-food-heading{display:flex;align-items:center;gap:13px}
+.regional-food-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#dce1d2;color:#536b3b;flex:none}
+.regional-food-heading .eyebrow{display:block;margin-bottom:4px}
+.regional-food-heading h3{margin:0;color:var(--forest);font:600 clamp(20px,3vw,28px)/1.3 var(--bengali),sans-serif}
+.regional-food-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:22px 0 12px}
+.regional-food-list li{padding:9px 14px;background:#f8f7f1;border:1px solid #d8dbcf;color:#314934;font:500 15px/1.4 var(--bengali),sans-serif}
+.regional-food-panel>p{margin:0;color:#72776b;font:13px/1.7 var(--bengali),sans-serif}
+@media(max-width:760px){.regional-specialty-button{min-height:145px;padding:15px}.regional-specialty-name strong{font-size:18px}.regional-food-list{gap:8px;margin-top:17px}.regional-food-list li{font-size:14px}}
